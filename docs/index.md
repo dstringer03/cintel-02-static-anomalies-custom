@@ -17,7 +17,7 @@ The dataset contains 22 patient observations with:
 - `age_years` - patient age in years.
 - `height_inches` - patient height in inches.
 
-[View Example Dataset](https://github.com/denisecase/cintel-02-static-anomalies/blob/main/data/clinic_data.csv)
+[View Example Dataset](https://github.com/dstringer03/cintel-02-static-anomalies-custom/blob/main/data/clinic_data.csv)
 
 ## Methods
 
@@ -41,7 +41,7 @@ The example pipeline identified **3 anomalous records**.
 | 10          | 72              | Height threshold |
 | 120         | 66              | Age threshold    |
 
-[View Anomaly Results](https://github.com/denisecase/cintel-02-static-anomalies/blob/main/artifacts/anomalies.csv)
+[View Anomaly Results](https://github.com/dstringer03/cintel-02-static-anomalies-custom/blob/main/artifacts/anomalies.csv)
 
 ## Interpretation
 
@@ -82,9 +82,9 @@ new observations arrive in a monitoring system.
 
 ## Project Links
 
-- [GitHub Repository](https://github.com/denisecase/cintel-02-static-anomalies)
-- [Example Pipeline](https://github.com/denisecase/cintel-02-static-anomalies/blob/main/src/cintel/anomaly_detector.py)
-- [Results and Artifacts](https://github.com/denisecase/cintel-02-static-anomalies/tree/main/artifacts)
+- [GitHub Repository](https://github.com/dstringer03/cintel-02-static-anomalies-custom)
+- [Example Pipeline](https://github.com/dstringer03/cintel-02-static-anomalies-custom/blob/main/src/cintel/anomaly_detector.py)
+- [Results and Artifacts](https://github.com/dstringer03/cintel-02-static-anomalies-custom/tree/main/artifacts)
 
 ## Project Resources
 

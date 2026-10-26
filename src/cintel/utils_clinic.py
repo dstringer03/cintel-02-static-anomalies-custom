@@ -1,5 +1,8 @@
 """utils_clinic.py.
 
+Author: Darrion Maurice Stringer
+Date: 2026-10
+
 Shared helper functions for the clinic anomaly-detection domain.
 
 Used by:

@@ -92,3 +92,6 @@ new observations arrive in a monitoring system.
 - [Professional Python Guide](https://denisecase.github.io/pro-analytics-02/)
 - [Professional Python Project Explainer](https://pup-pack.github.io/professional-python-project-explainer/).
 - [Suggested Datasets](https://denisecase.github.io/pro-analytics-02/reference/datasets/cintel/)
+## Adult Screening Results Chart
+
+![Adult clinic screening results](images/adult-screening.svg)

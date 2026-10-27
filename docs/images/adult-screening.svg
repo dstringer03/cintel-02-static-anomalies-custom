@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360">
+<rect width="800" height="360" fill="white"/>
+<g font-family="Arial" fill="#172033">
+<text x="30" y="40" font-size="26">Adult Clinic Screening Results</text>
+<text x="30" y="75" font-size="18">22 records reviewed; 22 flagged</text>
+<text x="30" y="140" font-size="18">Age below 18</text>
+<rect x="250" y="110" width="420" height="40" fill="#2563eb"/>
+<text x="685" y="138" font-size="20">21</text>
+<text x="30" y="205" font-size="18">Age 110 or older</text>
+<rect x="250" y="175" width="20" height="40" fill="#9333ea"/>
+<text x="285" y="203" font-size="20">1</text>
+<text x="30" y="270" font-size="18">Height 80+ inches</text>
+<rect x="250" y="240" width="20" height="40" fill="#ea580c"/>
+<text x="285" y="268" font-size="20">1</text>
+<text x="30" y="325" font-size="15">The height flag also belongs to the under-18 group. Counts overlap.</text>
+</g>
+</svg>

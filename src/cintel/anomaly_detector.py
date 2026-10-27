@@ -122,10 +122,9 @@ def main() -> None:
     # An anomaly is any observation that meets a defined threshold condition.
     # Domain rule for this example:
     # Observations meeting one or more threshold conditions are suspicious.
-    LOG.info("Studying children's ages and heights to find anomalies...")
-
+    LOG.info("Screening records for an adult clinic...")
     # x is age in years, so 16 is the upper limit for kids
-    MAX_REASONABLE_X_VALUE: Final[float] = 16.0
+    MAX_REASONABLE_X_VALUE: Final[float] = 110.0
 
     # y is height in inches, so maybe 6 feet (72 inches) is a reasonable upper limit
     MAX_REASONABLE_Y_VALUE: Final[float] = 80.0
@@ -142,6 +141,7 @@ def main() -> None:
         df,
         max_age_years=MAX_REASONABLE_X_VALUE,
         max_height_inches=MAX_REASONABLE_Y_VALUE,
+        min_age_years=18.0,
     )
 
     LOG.info(f"Count of anomalies found: {anomalies_df.height}")

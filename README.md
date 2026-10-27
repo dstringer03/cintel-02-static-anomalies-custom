@@ -211,3 +211,10 @@ testing, documentation, and code quality.
 - [Professional Python Workflow Guide](https://denisecase.github.io/pro-analytics-02/)
 - [Citation](CITATION.cff)
 - [License](LICENSE)
+I increased the height threshold from 72 to 80 inches and kept the age threshold at 16 years. I wanted to see how changing one cutoff would affect the results.
+
+I predicted the anomaly count would decrease from 3 to 2 because the 72-inch record would no longer be flagged.
+
+After running the pipeline, it found 2 anomalies: age 12 with height 95 inches, and age 120 with height 66 inches. This matched my prediction.
+
+I learned that changing a threshold changes which records get flagged, even when the data stays the same. Fewer flagged records does not automatically mean the detection is better.

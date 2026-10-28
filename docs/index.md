@@ -1,97 +1,98 @@
-# Static Anomaly Detection
+# Adult Clinic Record Screening
 
-Continuous Intelligence | Project 02 | Example Report
+Author: Darrion Maurice Stringer
+Date: 2026-10
+
+Continuous Intelligence | Project 02 | Custom Report
+
+Based on the example project by Denise Case.
 
 ## Overview
 
-This project investigates how simple domain thresholds
-can identify unusual observations in static tabular data.
+My question was: Which records would need review if the provided clinic file were submitted to an adult clinic?
 
-The example analyzes pediatric clinic records to identify
-ages and heights outside defined upper limits.
+I adapted the example by adding a minimum age rule and changing the upper age threshold.
 
 ## Data
 
-The dataset contains 22 patient observations with:
+I used the provided data/clinic_data.csv file containing 22 observations. Its columns are age_years and height_inches.
 
-- `age_years` - patient age in years.
-- `height_inches` - patient height in inches.
+The dataset contains mostly children's ages. I kept the data unchanged and applied adult screening rules to check whether it fit the intended population.
 
-[View Example Dataset](https://github.com/dstringer03/cintel-02-static-anomalies-custom/blob/main/data/clinic_data.csv)
+[View the dataset](https://github.com/dstringer03/cintel-02-static-anomalies-custom/blob/main/data/clinic_data.csv)
 
 ## Methods
 
-The pipeline uses Python and Polars to read the data
-and identify observations meeting either condition:
+I used Python, Polars, reusable functions, Boolean filtering, logging, and CSV output.
 
-- Age greater than or equal to 16 years.
-- Height greater than or equal to 72 inches.
+I added an optional minimum age parameter to the detection function. The main pipeline flags a record if any condition applies:
 
-These are example screening rules, not clinical standards.
+- Age below 18 years.
+- Age 110 years or older.
+- Height 80 inches or taller.
 
-Records meeting either condition are saved as anomalies.
+I chose 18 as the minimum age for this adult screening exercise. The upper cutoffs flag unusually high values for review. These are classroom screening rules, not clinical standards.
 
 ## Results
 
-The example pipeline identified **3 anomalous records**.
+The pipeline loaded 22 records and flagged all 22.
 
-| Age (years) | Height (inches) | Reason           |
-| ----------- | --------------- | ---------------- |
-| 12          | 95              | Height threshold |
-| 10          | 72              | Height threshold |
-| 120         | 66              | Age threshold    |
+- 21 records had ages below 18.
+- One record had an age of 120.
+- One record also exceeded the height cutoff, with a height of 95 inches.
 
-[View Anomaly Results](https://github.com/dstringer03/cintel-02-static-anomalies-custom/blob/main/artifacts/anomalies.csv)
+The height flag overlaps with the under-18 group, so the category counts should not be added together.
+
+The pipeline saved the results to artifacts/anomalies.csv.
+
+[View the flagged records](https://github.com/dstringer03/cintel-02-static-anomalies-custom/blob/main/artifacts/anomalies.csv)
+
+## Results Chart
+
+![Adult clinic screening results](images/adult-screening.svg)
+
+The chart summarizes the verified screening results.
 
 ## Interpretation
 
-The results demonstrate that threshold-based detection
-can identify observations requiring further investigation.
+My main finding was that the provided dataset does not match the adult population defined by my rules. Most records were flagged because they belonged to children.
 
-The records do not necessarily indicate incorrect data.
-They identify values that warrant review.
+This does not mean every record is incorrect. It means the records need review before being used as adult clinic data.
 
-For example, the recorded age of 120 years suggests
-a possible data-entry or population-classification issue.
+## Limitations and Next Steps
 
-## Limitations
+The dataset is small and mostly pediatric, so it cannot show how well these rules work on typical adult records.
 
-The current rules detect only values exceeding upper limits.
+The pipeline does not explicitly check for missing values, duplicates, or unusually low heights. I also do not have confirmed anomaly labels to measure detection accuracy.
 
-Unusually small measurements, such as a height of 5 inches
-for an eight-year-old, are not detected.
+Next, I would use a representative adult dataset, add validation checks, and review the thresholds with someone familiar with the data.
 
-A stronger approach would consider lower limits,
-age-dependent expectations, and domain knowledge.
+## Earlier Threshold Experiment
 
-## Conclusion
+Before applying adult rules, I increased the height cutoff from 72 to 80 inches while keeping the age cutoff at 16.
 
-Static anomaly detection provides a simple,
-interpretable approach for screening observations.
+I predicted the anomaly count would drop from 3 to 2. That matched the actual result: the record with age 10 and height 72 inches was no longer flagged.
 
-The same principles can be applied repeatedly as
-new observations arrive in a monitoring system.
+I learned that changing one threshold can change the results without changing the data. Fewer flags do not automatically mean better detection.
 
-## Documentation Index
+[View the experiment commit](https://github.com/dstringer03/cintel-02-static-anomalies-custom/commit/86e4f5b)
 
-- **Home** - this landing page
-- [**Project Instructions**](project-instructions.md)
-- [**Glossary**](glossary.md)
-- [**API**](api.md)
-- [**Reactive App**](./app/index.html)
+## Verification
+
+The adult pipeline ran successfully and reported 22 flagged records. The automated test passed, the Git hooks passed, and the documentation built without issues.
+
+## Run the Project
+
+From the project root, run:
+
+uv run python -m cintel.anomaly_detector
 
 ## Project Links
 
-- [GitHub Repository](https://github.com/dstringer03/cintel-02-static-anomalies-custom)
-- [Example Pipeline](https://github.com/dstringer03/cintel-02-static-anomalies-custom/blob/main/src/cintel/anomaly_detector.py)
+- [Repository](https://github.com/dstringer03/cintel-02-static-anomalies-custom)
+- [README](https://github.com/dstringer03/cintel-02-static-anomalies-custom/blob/main/README.md)
 - [Results and Artifacts](https://github.com/dstringer03/cintel-02-static-anomalies-custom/tree/main/artifacts)
-
-## Project Resources
-
 - [Project Instructions](project-instructions.md)
+- [Glossary](glossary.md)
+- [API](api.md)
 - [Professional Python Guide](https://denisecase.github.io/pro-analytics-02/)
-- [Professional Python Project Explainer](https://pup-pack.github.io/professional-python-project-explainer/).
-- [Suggested Datasets](https://denisecase.github.io/pro-analytics-02/reference/datasets/cintel/)
-## Adult Screening Results Chart
-
-![Adult clinic screening results](images/adult-screening.svg)
